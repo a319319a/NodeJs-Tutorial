@@ -1,0 +1,23 @@
+{
+  "name": "self-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a319319a/NodeJs-Tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a319319a/NodeJs-Tutorial/issues"
+  },
+  "homepage": "https://github.com/a319319a/NodeJs-Tutorial#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "yargs": "^17.6.2"
+  }
+}
