@@ -25,9 +25,11 @@ const addNote=(title,body)=>{
         title:title,
         body:body
     })
+    
+    saveNotes(notes)
 }
 
-const loadNotes=()=>{
+const loadNotes=function(){
     try {
         const dataBuffer=fs.readFileSync('./Text/text.json')
         const stringData=dataBuffer.toString()
@@ -37,7 +39,7 @@ const loadNotes=()=>{
     }
 }
 
-const saveNotes=(notes)=>{
+const saveNotes=function(notes){
     const jsonData=JSON.stringify('notes')
     if (!fs.existsSync("./Text/text.json")) {
         fs.writeFileSync('./Text/text.json',jsonData)
@@ -45,4 +47,4 @@ const saveNotes=(notes)=>{
         fs.appendFileSync('./Text/text.json',jsonData)
     }
 }
-module.exports={storeJson}
+module.exports={storeJson,addNote}

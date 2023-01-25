@@ -1,22 +1,45 @@
+const chalk=require('chalk')
+
+console.log(chalk.blue('Hello world!'));
+
 const getnotes=require('./note')
 const jsonData=require('./json')
 const yargs = require('yargs')
-// const { hideBin } = require('yargs/helpers')
-// const argv = yargs(hideBin(process.argv)).argv
+const { hideBin } = require('yargs/helpers')
+const argv = yargs(hideBin(process.argv)).argv
 
-yargs.version('1.1.0')
+
+yargs.command({
+    command:'remove',
+    describe:'Remove a note ',
+    builder:{
+        describe:'Note title',
+        demandOption:true,
+        type:'string'
+    },
+    handler:function () {
+        console.log('the data has been removed')
+    }
+})
+
 
 yargs.command({
     command:'add',
     describe:'Addd a new note',
+    builder:{
+        describe:'Note title',
+        demandOption:true,
+        type:'string'
+    },
+    body:{
+        describe:'Note Body',
+        demandOption:true,
+        type: 'string'
+    },
     handler:function (argv) {
-        console.log("Amartya mUkhopadhyay")
+        console.log("My name is amartya mukjerhee............")
     }
-})
+}).argv
 
-// console.log(yargs)s
-// getnotes.getNotes()
-// jsonData.storeJson()
-// console.log(getnotes.add(5,4))
-// console.log(getnotes.sub(99,12))
 
+console.log(chalk.blue('Hello world!'));
