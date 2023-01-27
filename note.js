@@ -3,7 +3,7 @@ const { isAbsolute } = require('path')
 
 const getNotes=function(){
     if (fs.existsSync('./Text/text.txt')) {
-        fs.appendFileSync('./Text/text.txt','I am learning node js. ')
+        fs.writeFileSync('./Text/text.txt','I am learning node js. ')
     } else {
         fs.mkdirSync("Text")
         fs.writeFileSync('./Text/text.txt','My name is amartya. ')
