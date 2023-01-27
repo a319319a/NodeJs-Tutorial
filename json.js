@@ -21,13 +21,23 @@ const storeJson=()=>{
 
 const addNote=(title,body)=>{
    const notes=loadNotes()
-    console.log(loadNotes())
-    notes.push({
-        title:title,
-        body:body
-    })
     
-    saveNotes(notes)
+    const duplicateNotes=notes.filter(function(note){
+        return note.title===title
+    })
+
+    if (!duplicateNotes) {
+        notes.push({
+            title:title,
+            body:body
+        })
+        
+        saveNotes(notes)
+    }
+    else
+    {
+        console.log('Note title already exists')
+    }
 }
 
 const loadNotes=function(){
