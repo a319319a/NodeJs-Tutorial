@@ -1,11 +1,7 @@
 const chalk=require('chalk')
+console.log(blue('Hello world!'));
 
-console.log(chalk.blue('Hello world!'));
-
-const getnotes=require('./note')
-const jsonData=require('./json')
-const yargs = require('yargs')
-const { hideBin } = require('yargs/helpers')
+const yargs=require('yargs')
 const argv = yargs(hideBin(process.argv)).argv
 
 

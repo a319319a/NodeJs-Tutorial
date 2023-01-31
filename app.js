@@ -1,7 +1,7 @@
 
 const yargs=require('yargs')
-const notes=require('./note')
-const jsonOperation=require('./json')
+const jsonOperations=require('./json')
+const http=require('http')
 yargs.version('10.0.0')
 
 // create add command
@@ -21,12 +21,8 @@ yargs.command({
             type:'string'
         }
     },
-    handler:function (argv) {
-        // console.log("Title is "+argv.title)       
-        // console.log('The body is '+argv.body) 
-        // notes.getNotes()
-        jsonOperation.addNote(argv.title,argv.body)
-        
+    handler(argv) {
+        jsonOperations.addNote(argv.title,argv.body)
     }
 
 })
@@ -34,7 +30,15 @@ yargs.command({
 yargs.command({
     command:'remove',
     description:'Remove a note',
-    handler:function () {
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(argv) {
+        jsonOperations.removeNote(argv.title)
         console.log("Removing a a command from the list")      
     }
 })
@@ -42,16 +46,25 @@ yargs.command({
 yargs.command({
     command:'list',
     description:'List of the notes',
-    handler:function () {
-        console.log("Lists the existing notes in a row")        
+    handler() {
+        jsonOperations.list()        
     }
 })
 
 yargs.command({
     command:'read',
     description:'reading from the file of the notes',
-    handler:function () {
-        console.log('Read from the list and then pest it to the comman line')       
+    builder:{
+        title:{
+            describe:"Note title",
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(argv) {
+        if (jsonOperations.readNote(argv.title)) {
+            console.log('the information regarding the note',jsonOperations.readNote(argv.title))
+        }
     }
 })
 
